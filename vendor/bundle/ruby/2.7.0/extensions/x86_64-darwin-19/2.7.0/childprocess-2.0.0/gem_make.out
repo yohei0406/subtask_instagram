@@ -1,0 +1,5 @@
+current directory: /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/childprocess-2.0.0/ext
+/Users/yohei/.rbenv/versions/2.7.0/bin/ruby mkrf_conf.rb
+
+current directory: /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/childprocess-2.0.0/ext
+/Users/yohei/.rbenv/versions/2.7.0/bin/ruby -I/Users/yohei/.rbenv/versions/2.7.0/lib/ruby/2.7.0/rubygems -rrubygems /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/rake-12.3.3/exe/rake RUBYARCHDIR\=/Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-19/2.7.0/childprocess-2.0.0 RUBYLIBDIR\=/Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-19/2.7.0/childprocess-2.0.0

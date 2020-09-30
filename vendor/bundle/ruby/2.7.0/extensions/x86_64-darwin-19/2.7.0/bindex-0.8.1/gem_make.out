@@ -1,0 +1,15 @@
+current directory: /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/yohei/.rbenv/versions/2.7.0/bin/ruby -I /Users/yohei/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20200930-8652-1wnmp2e.rb extconf.rb
+creating Makefile
+
+current directory: /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/yohei/environment/subtask_instagram/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20200930-8652-dnh5o0/skiptrace/internal
