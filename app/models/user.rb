@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
-  validates :email, uniqueness: true
-  validates :username, uniqueness: true
+  validates :fullname, presence: true, length: { maximum: 50 }
+  validates :email, uniqueness: true, length: { maximum: 255 }
+  validates :username, uniqueness: true, length: { maximum: 50 }
 
 
   def self.from_omniauth(auth)
