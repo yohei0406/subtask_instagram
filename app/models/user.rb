@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 
@@ -14,6 +13,7 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.name
+      user.fullname = auth.fullname
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20] # ランダムなパスワードを作成
       user.image = auth.info.image.gsub("picture","picture?type=large") if user.provider == "facebook"
