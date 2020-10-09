@@ -1,0 +1,7 @@
+<li id="imagepost-<%= imagepost.id %>">
+  <span class="user"><%= link_to imagepost.user.username, imagepost.user %></span>
+  <span class="content"><%= imagepost.image %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(imagepost.created_at) %> ago.
+  </span>
+</li>

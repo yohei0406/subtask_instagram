@@ -1,0 +1,6 @@
+<%= form_with model: @imagepost, local: true do |f| %>
+  <%= f.file_field :image, id: "imageFile", onchange: "selectFile()" %>
+  <%= f.submit "投稿する", id: "btnUPload", disabled: true %>
+<% end %>
+
+<%= javascript_pack_tag "imagepost/btnupload" %>
