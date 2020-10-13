@@ -1,8 +1,17 @@
 function selectFile() {
-    if (document.getElementById("imageFile").value === ""){
-        document.getElementById("btnUPload").disabled = true;
+    if (document.getElementById("elmFile").value === ""){
+        document.getElementById("btnUpload").disabled = true;
     }
     else {
-        document.getElementById("btnUPload").disabled = false;
+        document.getElementById("btnUpload").disabled = false;
     }
+}
+
+function(){
+	$('input:file').change(
+		function(){
+			if ($(this).val()) {
+				$('button:submit').attr('disabled',false);
+			}
+		});
 }
