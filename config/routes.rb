@@ -5,6 +5,12 @@ Rails.application.routes.draw do
         							registrations: 'users/registrations'
         						  }
   root to: "home#index"
+
+  resources :imageposts, only: [:create, :new, :show] do
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :users, only: [:show, :edit, :update]
-  resources :imageposts, only: [:create, :new, :show]
+
+
 end

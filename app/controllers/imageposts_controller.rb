@@ -12,6 +12,7 @@ class ImagepostsController < ApplicationController
   def show
   	@imagepost = Imagepost.find(params[:id])
   	@user = User.find_by(id: @imagepost.user_id)
+    @comment = Comment.new
   end
 
   def create

@@ -2,3 +2,15 @@
   <%= @user.username %>の投稿
 </div>
 <%= image_tag @imagepost.image.url if @imagepost.image? %>
+
+<h1>コメントする</h1>
+<%= form_with(model: [@imagepost, @comment], method: :post ) do |f| %>
+  <%= f.text_field :comment_content %>
+  <%= f.hidden_field :imagepost_id, value: @imagepost.id %>
+  <%= f.submit "コメントする" %>
+<% end %>
+
+<h1>コメント一覧</h1>
+<% @imagepost.comments.each do |comment| %>
+  <%= comment.comment_content %>
+<% end %>

@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @imageposts = @user.imageposts
-
+    @imagepost = Imagepost.find_by(user_id: @user.id)
   end
 
   def edit
@@ -21,7 +20,11 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   def user_params
     params.require(:user).permit(:fullname, :username, :email, :image, :profile)
   end
+
+
 end

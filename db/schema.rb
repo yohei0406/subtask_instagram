@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_021003) do
+ActiveRecord::Schema.define(version: 2020_10_13_215850) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment_content"
+    t.integer "user_id", null: false
+    t.integer "imagepost_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["imagepost_id"], name: "index_comments_on_imagepost_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "imageposts", force: :cascade do |t|
     t.string "image"
@@ -41,5 +51,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_021003) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comments", "imageposts"
+  add_foreign_key "comments", "users"
   add_foreign_key "imageposts", "users"
 end

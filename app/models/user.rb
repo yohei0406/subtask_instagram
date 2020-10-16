@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :imageposts, dependent: :destroy
+  has_many :comments
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
@@ -22,4 +23,9 @@ class User < ApplicationRecord
       user.image = auth.info.image.gsub("picture","picture?type=large") if user.provider == "facebook"
     end
   end
+
+  def imageposts
+    return Imagepost.where(user_id: self.id)
+  end
+
 end

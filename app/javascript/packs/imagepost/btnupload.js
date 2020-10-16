@@ -11,7 +11,7 @@ function(){
 	$('input:file').change(
 		function(){
 			if ($(this).val()) {
-				$('button:submit').attr('disabled',false);
+				$('input:submit').attr('disabled',false);
 			}
 		});
 }
