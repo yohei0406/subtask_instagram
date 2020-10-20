@@ -1,0 +1,14 @@
+<header class="navbar">
+  <div class="header-left">
+    <%= link_to "TopPage", root_path %>
+  </div>
+  <% if user_signed_in? %>
+    <ul class="navbar-right">
+      <li><%= link_to "写真を投稿する", new_imagepost_path %></li>
+      <li><%= link_to "通知？", root_path %></li>
+      <li><%= link_to "マイページ", user_path(current_user) %></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </ul>
+  <% else %>
+  <% end %>
+</header>
