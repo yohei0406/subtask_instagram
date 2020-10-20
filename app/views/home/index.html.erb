@@ -1,5 +1,5 @@
 <% provide(:title, "TopPage") %>
-<% if user_signed_in? %>
+<p>ログイン中のユーザー</p><% if user_signed_in? %>
 <%= @user.username %>
 <% else %>
 <%= link_to "ログイン", new_user_session_path %>
