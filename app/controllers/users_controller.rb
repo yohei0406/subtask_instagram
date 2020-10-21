@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
  before_action :user_params, only: [:update]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @imagepost = Imagepost.find_by(user_id: @user.id)
