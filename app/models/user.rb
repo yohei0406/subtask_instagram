@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :imageposts, dependent: :destroy
-  has_many :comment
+  has_many :comments
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -32,10 +32,6 @@ class User < ApplicationRecord
     end
   end
 
-  def imageposts
-    return Imagepost.where(user_id: self.id)
-  end
-
   # ユーザーをフォローする
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -49,6 +45,12 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Imagepost.where("user_id IN (#{following_ids})", user_id: id)
   end
 
 end

@@ -1,7 +1,8 @@
 <% provide(:title, "TopPage") %>
-<p>ログイン中のユーザー</p><% if user_signed_in? %>
-<%= @user.username %>
+<p>フォローしているユーザーの投稿</p>
+<% if user_signed_in? %>
+  <%= render 'devise/shared/feed' %>
 <% else %>
-<%= link_to "ログイン", new_user_session_path %>
-<%= link_to "ユーザー登録", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+  <%= link_to "ユーザー登録", new_user_registration_path %>
 <% end %>

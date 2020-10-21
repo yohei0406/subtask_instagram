@@ -1,7 +1,13 @@
-<li id="imagepost-<%= imagepost.id %>">
+<li>
   <span class="user"><%= link_to imagepost.user.username, imagepost.user %></span>
-  <span class="content"><%= imagepost.image %></span>
+  <span class="content"><%= image_tag imagepost.image.url if imagepost.image? %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(imagepost.created_at) %> ago.
   </span>
 </li>
+<h1>コメントする</h1>
+<%= form_with(model: [imagepost, @comment], method: :post ) do |f| %>
+  <%= f.text_field :comment_content %>
+  <%= f.hidden_field :imagepost_id, value: imagepost.id %>
+  <%= f.submit "コメントする" %>
+<% end %>

@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @imagepost = Imagepost.find_by(user_id: @user.id)
   end
 
   def edit
