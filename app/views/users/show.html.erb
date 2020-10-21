@@ -5,6 +5,12 @@
   <image src="/assets/default.jpg">
 <% end %>
 <p>プロフィール : <%= @user.profile %></p>
+<section class="stats">
+  <%= render 'devise/shared/stats' %>
+</section>
+<section>
+  <%= render 'devise/shared/follow_form' if user_signed_in? %>
+</section>
 <div class="col-md-8">
     <% if @user.imageposts.any? %>
       <h3>Imageposts (<%= @user.imageposts.count %>)</h3>
