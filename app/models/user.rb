@@ -9,6 +9,7 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :favorites, dependent: :destroy
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
@@ -52,5 +53,6 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Imagepost.where("user_id IN (#{following_ids})", user_id: id)
   end
+
 
 end

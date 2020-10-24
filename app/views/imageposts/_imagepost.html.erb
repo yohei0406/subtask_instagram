@@ -5,6 +5,17 @@
     Posted <%= time_ago_in_words(imagepost.created_at) %> ago.
   </span>
 </li>
+<h1>いいね機能</h1>
+<% if current_user.alredy_favorited?(imagepost) %>
+  <%= link_to imagepost_favorites_path(imagepost), method: :delete do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to imagepost_favorites_path(imagepost), method: :post do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>
+
 <h1>コメントする</h1>
 <%= form_with(model: [imagepost, @comment], method: :post ) do |f| %>
   <%= f.text_field :comment_content %>
