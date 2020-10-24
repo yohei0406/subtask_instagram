@@ -8,4 +8,5 @@ class ApplicationRecord < ActiveRecord::Base
   def alredy_favorited?(imagepost)
     self.favorites.exists?(imagepost_id: imagepost.id)
   end
+
 end

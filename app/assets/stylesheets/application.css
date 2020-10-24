@@ -17,3 +17,13 @@
 .navbar-right li {
 	padding: 0 30px;
 }
+
+/* モーダル */
+.modal-middle {
+ 	margin: 5% auto;
+}
+
+.modal-img_footer {
+ 	padding: .5em;
+ 	text-align: center;
+}
