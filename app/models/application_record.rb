@@ -9,4 +9,7 @@ class ApplicationRecord < ActiveRecord::Base
     self.favorites.exists?(imagepost_id: imagepost.id)
   end
 
+
+
+
 end

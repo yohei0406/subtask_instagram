@@ -10,4 +10,6 @@ class Imagepost < ApplicationRecord
   def comments
     return Comment.where(imagepost_id: self.id)
   end
+
+
 end
