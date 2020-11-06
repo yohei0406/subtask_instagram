@@ -1,46 +1,52 @@
-<li>
-  <span class="aaa" data-toggle="modal" data-target="#image-modal-<%= imagepost.id %>" style="cursor:pointer">
-    <%= image_tag imagepost.image.url if imagepost.image? %>
-  </span>
-  <div class="modal fade" id="image-modal-<%= imagepost.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg modal-middle">
-  	  <div class="modal-content">
-        <div class="modal-body">
-          <span class="aaa">
-            <%= image_tag imagepost.image.url if imagepost.image? %>
-          </span>
-        </div>
-        <div class="modal-img_footer">
-          <div class="comment_all">
-          	<p>コメント一覧</p>
-	        <% imagepost.comments.each do |comment| %>
-	          <%= comment.comment_content %>
-	        <% end %>
+<div class="imageposts-contents">
+  <li>
+    <span class="imageposts" data-toggle="modal" data-target="#image-modal-<%= imagepost.id %>" style="cursor:pointer">
+      <%= image_tag imagepost.image.url if imagepost.image? %>
+    </span>
+    <div class="modal fade" id="image-modal-<%= imagepost.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg modal-middle">
+    	  <div class="modal-content">
+          <div class="modal-body">
+            <span class="imageposts">
+              <%= image_tag imagepost.image.url if imagepost.image? %>
+            </span>
           </div>
-          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+          <div class="modal-img_footer">
+            <div class="comment-all">
+            	<h3>● コメント一覧</h3>
+  	        <% imagepost.comments.each do |comment| %>
+              <div class="comment-content">
+                <%= link_to comment.user.username, "/users/#{comment.user_id}" %>
+  	            <%= comment.comment_content %>
+              </div>
+  	        <% end %>
+            </div>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+  </li>
+  <div class="like_and_comment">
+    <div class="like">
+      <% if current_user.alredy_favorited?(imagepost) %>
+        <%= link_to imagepost_favorites_path(imagepost), method: :delete do %><%= imagepost.favorites.count %>
+          <i class="fas fa-heart fa-2x"></i>
+        <% end %>
+      <% else %>
+        <%= link_to imagepost_favorites_path(imagepost), method: :post do %><%= imagepost.favorites.count %>
+          <i class="far fa-heart fa-2x"></i>
+        <% end %>
+      <% end %>
+    </div>
+  　<div class="comment">
+      <%= form_with(model: [imagepost, @comment], method: :post ) do |f| %>
+        <%= f.text_field :comment_content, value: "コメントを入力" %>
+        <%= f.hidden_field :imagepost_id, value: imagepost.id %>
+        <%= f.submit "投稿" %>
+      <% end %>
+    </div>
   </div>
-</li>
-<h1>いいね機能</h1>
-<% if current_user.alredy_favorited?(imagepost) %>
-  <%= link_to imagepost_favorites_path(imagepost), method: :delete do %>
-    <i class="fas fa-heart"></i>
-  <% end %>
-<% else %>
-  <%= link_to imagepost_favorites_path(imagepost), method: :post do %>
-    <i class="far fa-heart"></i>
-  <% end %>
-<% end %>
-
-
-<h1>コメントする</h1>
-<%= form_with(model: [imagepost, @comment], method: :post ) do |f| %>
-  <%= f.text_field :comment_content %>
-  <%= f.hidden_field :imagepost_id, value: imagepost.id %>
-  <%= f.submit "コメントする" %>
-<% end %>
-
+</div>
 
 

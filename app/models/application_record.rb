@@ -5,6 +5,10 @@ class ApplicationRecord < ActiveRecord::Base
     return Imagepost.where(user_id: self.id)
   end
 
+  def comments
+    return Comment.where(imagepost_id: self.id)
+  end
+
   def alredy_favorited?(imagepost)
     self.favorites.exists?(imagepost_id: imagepost.id)
   end

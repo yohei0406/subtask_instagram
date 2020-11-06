@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "users/:id/likes" => "users#likes"
+
+
   root to: "home#index"
 
   resources :imageposts, only: [:create, :new, :show] do

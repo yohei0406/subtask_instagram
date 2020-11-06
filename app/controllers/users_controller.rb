@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
  before_action :user_params, only: [:update]
+ before_action :correct_user,   only: [:edit, :update]
 
   def index
     @users = User.all
@@ -21,6 +22,11 @@ class UsersController < ApplicationController
     else
        render 'edit'
     end
+  end
+
+  def likes
+    favorites = Favorite.where(user_id: current_user.id).pluck(:imagepost_id)
+    @favorite_list = Imagepost.find(favorites)
   end
 
   def following

@@ -7,9 +7,5 @@ class Imagepost < ApplicationRecord
   validates :image, presence: true
   validates :user_id, presence: true
 
-  def comments
-    return Comment.where(imagepost_id: self.id)
-  end
-
 
 end

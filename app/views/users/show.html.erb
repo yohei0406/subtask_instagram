@@ -1,27 +1,43 @@
-<h1><%= @user.username %>のユーザーページ</h1>
-<% if @user.image? %>
-  <%= image_tag @user.image.url %>
-<% else %>
-  <image src="/assets/default.jpg">
-<% end %>
-<p>プロフィール : <%= @user.profile %></p>
-<section class="stats">
-  <%= render 'devise/shared/stats' %>
-</section>
-<section>
-  <%= render 'devise/shared/follow_form' if user_signed_in? %>
-</section>
-<div class="col-md-8">
-    <% if @user.imageposts.any? %>
-      <h3>Imageposts (<%= @user.imageposts.count %>)</h3>
-      <ol class="imageposts">
-        <% @user.imageposts.each do |post| %>
-         <%= link_to post.id, "/imageposts/#{post.id}" %>
-         <%= image_tag post.image.url %>
-        <% end %>
-      </ol>
-    <% end %>
+<% provide(:title, "ユーザーページ" ) %>
+<div class="profile">
+  <% if @user.image? %>
+    <%= image_tag @user.image.url %>
+  <% else %>
+    <image src="/assets/default.jpg">
+  <% end %>
+  <p class="username">ユーザーネーム : <%= @user.username %></p>
+  <div class="stats">
+    <%= render 'devise/shared/stats' %>
+  </div>
+  <div>
+    <%= render 'devise/shared/follow_form' if user_signed_in? %>
+  </div>
+　<% if @user.id == current_user.id %>
+    <p class="profile-edit"><%= link_to 'プロフィールの編集', edit_user_path(current_user) %></p>
+　<% end %>
+  <div class="profile-message">
+    <h2>● 自己紹介</h2>
+    <div class="profile-message-content">
+      <%= @user.profile %>
+    </div>
+  </div>
+</div>
+<div class="my-imageposts">
+  <% if @user.imageposts.any? %>
+    <h2>● 投稿写真一覧 　(<%= @user.imageposts.count %>)</h2>
+    <div class="my-imageposts-all row" >
+      <% @user.imageposts.each do |post| %>
+        <div class="imagepost-contents col-md-4">
+          <div class="imagepost-item1">
+            <%= image_tag post.image.url %>
+          </div>
+          <div class="imagepost-item2">
+            <%= link_to "id:#{post.id}の詳細", "/imageposts/#{post.id}" %>
+         </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
-<%= link_to 'プロフィールの編集', edit_user_path(current_user) %>
-<%= link_to '画像投稿ページ', new_imagepost_path(current_user) %>
+
