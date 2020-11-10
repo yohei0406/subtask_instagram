@@ -1,0 +1,20 @@
+<% provide(:title, 'お気に入り') %>
+<div class="my-imageposts">
+  <% if @favorite_list.any? %>
+    <h2>● お気に入り一覧 　(<%= @favorite_list.count %>)</h2>
+    <div class="my-imageposts-all row" >
+      <% @favorite_list.each do |post| %>
+        <div class="imagepost-contents col-md-4">
+          <div class="imagepost-item1">
+            <%= image_tag post.image.url %>
+          </div>
+          <div class="imagepost-item2">
+            <%= link_to "id:#{post.id}の詳細", "/imageposts/#{post.id}" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+   <h3>お気に入りの投稿はありません</h3>
+  <% end %>
+</div>

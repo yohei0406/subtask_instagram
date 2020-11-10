@@ -1,0 +1,8 @@
+<% provide(:title, "TopPage") %>
+<div class="following_user-contents">
+  <h2>● フォローしているユーザーの投稿</h2>
+  <% if user_signed_in? %>
+    <%= render 'devise/shared/feed' %>
+  <% else %>
+  <% end %>
+</div>

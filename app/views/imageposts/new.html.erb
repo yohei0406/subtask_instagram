@@ -1,0 +1,13 @@
+<% provide(:title, "投稿する") %>
+<%= form_with model: @imagepost, local: true do |f| %>
+  <div class="imagepost-file_field">
+    <%= f.file_field :image, type: 'file', id: 'file' %>
+  </div>
+  <div class="file_field-btn">
+    <%= f.submit '投稿する', type: 'submit', id: 'btnUPload', disabled: true %>
+  </div>
+<% end %>
+
+
+
+

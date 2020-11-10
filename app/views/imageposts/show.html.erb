@@ -1,0 +1,28 @@
+<% provide(:title, "写真個別ページ") %>
+<div class="imagepost">
+  <div class="imagepost-username">
+    <h2>● <%= @user.username %>さんの投稿</h2>
+  </div>
+  <div class="imagepost-content">
+    <%= image_tag @imagepost.image.url if @imagepost.image? %>
+  </div>
+  <div class="comment-all">
+    <h2>● コメント一覧</h2>
+    <div class="comment-contents-all">
+      <% @imagepost.comments.each do |comment| %>
+        <div class="comment-contents">
+          <%= link_to comment.user.username, "/users/#{comment.user_id}" %>
+          <%= comment.comment_content %>
+        </div>
+      <% end %>
+     </div>
+  </div>
+  <div class="post-comment">
+  <h2>● コメントする</h2>
+  <%= form_with(model: [@imagepost, @comment], method: :post ) do |f| %>
+    <%= f.text_field :comment_content %>
+    <%= f.hidden_field :imagepost_id, value: @imagepost.id %>
+    <%= f.submit "コメントを投稿" %>
+  <% end %>
+  </div>
+</div>

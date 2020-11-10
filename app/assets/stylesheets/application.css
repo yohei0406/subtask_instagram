@@ -1,15 +1,134 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.container {
+	text-align: center;
+    margin-bottom: 40px;
+}
+
+/* header */
+.current_user-username {
+    list-style: none;
+    color: white;
+}
+
+.current_user-username p {
+    margin-bottom: 0px;
+}
+
+/* トップページ　*/
+ul {
+    padding-left: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+h2 {
+    text-align: left;
+}
+
+.imageposts-contents li {
+    margin-top: 40px;
+}
+
+.imageposts-contents img {
+    width: 60%;
+}
+
+.like_and_comment {
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+
+
+
+
+/* モーダル */
+.modal-middle {
+ 	margin: 5% auto;
+}
+
+.modal-img_footer {
+ 	padding: .5em;
+ 	text-align: center;
+}
+
+
+
+
+/* ユーザー個別ページ */
+.profile img {
+    border-radius: 50%;
+    border: 2px solid;
+    border-color : #333333;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.username, .profile-edit, .profile-message-content, .imagepost-contents {
+	margin-top: 40px;
+}
+
+.profile-message, .my-imageposts h2 {
+	text-align: left;
+}
+
+.profile-message, .my-imageposts {
+    margin-top: 40px;
+}
+
+.imagepost-item1 img {
+    width: 100%;
+
+}
+
+/* 投稿ページ */
+.file_field-btn {
+    margin-top: 20px;
+}
+
+
+/* 投稿写真個別ページ */
+.imagepost-username, .comment-all h2 {
+    text-align: left;
+}
+
+.comment-contents-all {
+    border: 1px solid #666666;
+    background-color: #EEEEEE;
+}
+
+.comment-contents {
+    margin: 20px;
+    border-bottom: 1px dashed #444444;
+}
+
+.comment-all, .post-comment {
+    margin-top: 40px;
+}
+
+
+/* devise　*/
+
+.field, .links {
+    margin-top: 20px;
+}
+
+.destroy-account {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

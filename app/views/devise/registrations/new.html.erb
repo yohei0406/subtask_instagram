@@ -1,0 +1,49 @@
+<% provide(:title, "ユーザーの登録") %>
+<h1>ユーザーの登録</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :フルネーム %><br />
+    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ユーザーネーム %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :プロフィール画像 %><br />
+    <%= f.file_field :image %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード確認 %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+
+<div class="links">
+  <%= render "devise/shared/links" %>
+</div>
+
+<a href="#">利用規約</a>

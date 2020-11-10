@@ -1,0 +1,32 @@
+<% provide(:title, "編集") %>
+<h1>編集</h1>
+
+<%= form_with model: @user, local: true do |f| %>
+	<div class="field">
+    <%= f.label :フルネーム %><br />
+    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ユーザーネーム %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :プロフィール画像 %><br />
+    <%= f.file_field :image %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :profile %><br />
+    <%= f.text_area :profile, autofocus: true %>
+  </div>
+	<%= f.submit "編集" %>
+<% end %>
+<div class="links">
+  <%= link_to 'パスワードの編集・アカウントの削除', edit_user_registration_path(current_user) %>
+</div>
