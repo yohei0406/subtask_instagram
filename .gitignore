@@ -40,7 +40,7 @@
 yarn-debug.log*
 .yarn-integrity
 /.env
-public/uploads
+public/uploads/
 test/
-.scss
-vendor/bundle
+*.scss
+vendor/bundle/
